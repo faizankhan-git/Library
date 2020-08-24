@@ -1,0 +1,23 @@
+version: '2'
+services:
+  library-app:
+    image: library
+    environment:
+      - _JAVA_OPTIONS=-Xmx512m -Xms256m
+      - SPRING_PROFILES_ACTIVE=prod,swagger
+      - MANAGEMENT_METRICS_EXPORT_PROMETHEUS_ENABLED=true
+      - SPRING_DATA_MONGODB_URI=mongodb://library-mongodb:27017
+      - SPRING_DATA_MONGODB_DATABASE=Library
+      - JHIPSTER_SLEEP=30 # gives time for other services to boot before the application
+      - SPRING_DATA_JEST_URI=http://library-elasticsearch:9200
+      - SPRING_ELASTICSEARCH_REST_URIS=http://library-elasticsearch:9200
+    ports:
+      - 8080:8080
+  library-mongodb:
+    extends:
+      file: mongodb.yml
+      service: library-mongodb
+  library-elasticsearch:
+    extends:
+      file: elasticsearch.yml
+      service: library-elasticsearch
