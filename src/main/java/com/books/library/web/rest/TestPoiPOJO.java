@@ -14,7 +14,6 @@ public class TestPoiPOJO {
 		Workbook workbook = WorkbookFactory.create(new FileInputStream("F:\\Study\\Jhipster\\ExcelBooks.xlsx"));
 		Sheet sheet = workbook.getSheetAt(0);
 		List<Books> books = PoiPOJOUtils.sheetToPOJO(sheet, Books.class);
-		System.out.println(books);
 
 		Books book = new Books();
 		book.bookName = "Godan";
