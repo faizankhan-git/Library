@@ -1,0 +1,11 @@
+
+entity Books{
+	bookName String,
+	genre String,
+	price Integer,
+	date ZonedDateTime,
+	writerName String,
+	edition Integer,
+	description String
+	
+}

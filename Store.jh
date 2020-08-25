@@ -1,0 +1,27 @@
+
+entity Store{
+	
+	issuedDate ZonedDateTime,
+	returnDate ZonedDateTime,
+	period Integer,
+	rent Integer,
+	fine Integer,
+	issuedBy String,
+	issuedTo String,
+	isMember Boolean
+	
+}
+entity Books{
+	bookName String,
+	genre String,
+	price Integer,
+	date ZonedDateTime,
+	writerName String,
+	edition Integer,
+	description String
+	
+}
+
+relationship ManyToMany {
+  Store{books} to Books{store}
+}

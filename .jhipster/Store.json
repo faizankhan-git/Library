@@ -1,0 +1,58 @@
+{
+  "name": "Store",
+  "fields": [
+    {
+      "fieldName": "issuedDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "returnDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "period",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "rent",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "fine",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "issuedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "issuedTo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "isMember",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "books",
+      "otherEntityRelationshipName": "store",
+      "relationshipName": "books",
+      "otherEntityField": "id",
+      "ownerSide": true
+    }
+  ],
+  "changelogDate": "20200825091355",
+  "entityTableName": "store",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

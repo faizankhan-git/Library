@@ -1,0 +1,83 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-store-heading">Create or edit a Store</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_issuedDate">Issued Date</label>
+                    <div class="d-flex">
+                        <input id="field_issuedDate" type="datetime-local" class="form-control" name="issuedDate" formControlName="issuedDate" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_returnDate">Return Date</label>
+                    <div class="d-flex">
+                        <input id="field_returnDate" type="datetime-local" class="form-control" name="returnDate" formControlName="returnDate" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_period">Period</label>
+                    <input type="number" class="form-control" name="period" id="field_period"
+                           formControlName="period"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_rent">Rent</label>
+                    <input type="number" class="form-control" name="rent" id="field_rent"
+                           formControlName="rent"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_fine">Fine</label>
+                    <input type="number" class="form-control" name="fine" id="field_fine"
+                           formControlName="fine"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_issuedBy">Issued By</label>
+                    <input type="text" class="form-control" name="issuedBy" id="field_issuedBy"
+                           formControlName="issuedBy"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_issuedTo">Issued To</label>
+                    <input type="text" class="form-control" name="issuedTo" id="field_issuedTo"
+                           formControlName="issuedTo"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_isMember">Is Member</label>
+                    <input type="checkbox" class="form-control" name="isMember" id="field_isMember"
+                           formControlName="isMember"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="field_books">Books</label>
+                    <select class="form-control" id="field_books" multiple name="books" formControlName="books">
+                        <option [ngValue]="getSelected(editForm.get('books')!.value, booksOption)" *ngFor="let booksOption of books; trackBy: trackById">{{ booksOption.bookName }} , {{ booksOption.writerName }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

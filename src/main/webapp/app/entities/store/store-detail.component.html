@@ -1,0 +1,64 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="store">
+            <h2><span>Store</span> {{ store.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Issued Date</span></dt>
+                <dd>
+                    <span>{{ store.issuedDate }}</span>
+                </dd>
+                <dt><span>Return Date</span></dt>
+                <dd>
+                    <span>{{ store.returnDate }}</span>
+                </dd>
+                <dt><span>Period</span></dt>
+                <dd>
+                    <span>{{ store.period }}</span>
+                </dd>
+                <dt><span>Rent</span></dt>
+                <dd>
+                    <span>{{ store.rent }}</span>
+                </dd>
+                <dt><span>Fine</span></dt>
+                <dd>
+                    <span>{{ store.fine }}</span>
+                </dd>
+                <dt><span>Issued By</span></dt>
+                <dd>
+                    <span>{{ store.issuedBy }}</span>
+                </dd>
+                <dt><span>Issued To</span></dt>
+                <dd>
+                    <span>{{ store.issuedTo }}</span>
+                </dd>
+                <dt><span>Is Member</span></dt>
+                <dd>
+                    <span>{{ store.isMember }}</span>
+                </dd>
+                <dt><span>Books</span></dt>
+                <dd>
+                    <span *ngFor="let books of store.books; let last = last">
+                        <a [routerLink]="['/books', books?.id, 'view']">{{ books.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/store', store.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
